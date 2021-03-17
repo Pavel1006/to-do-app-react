@@ -1,0 +1,7 @@
+.border {
+  width: 230px;
+  height: 30px;
+  border: 1px solid;
+  display: flex;
+  justify-content: space-between;
+}
