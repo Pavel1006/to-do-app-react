@@ -1,11 +1,12 @@
 import React from "react";
-import "./index.css";
+import "./task-card.css";
 
 const TaskCard = () => {
   return (
     <div className="border">
       <input type="checkbox" />
-      <span></span> <button>delete</button>
+      <span></span>
+      <button>delete</button>
     </div>
   );
 };
