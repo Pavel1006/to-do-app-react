@@ -2,19 +2,40 @@ import React, { useState } from "react";
 import { TaskInput } from "./task-input";
 import { TaskCard } from "./task-card";
 import { TaskModule } from "./types";
+import "./App.css";
 
 function App() {
   const [tasks, setTasks] = useState<TaskModule.Task[]>([]);
-  function handleDelete() {}
+  const [inputVal, setInputVal] = useState("");
+  function handleEdit(id: string, description: string) {
+    const remainingTasks = tasks.filter((task) => task.id !== id);
+    setInputVal(description);
+    setTasks(remainingTasks);
+  }
+
+  function handleDelete(id: string) {
+    const remainingTasks = tasks.filter((task) => task.id !== id);
+    setTasks(remainingTasks);
+  }
   console.log(tasks);
   return (
     <div className="MainDiv">
-      <TaskInput setTasks={setTasks} />
+      <TaskInput
+        inputVal={inputVal}
+        setInputVal={setInputVal}
+        setTasks={setTasks}
+      />
       {tasks.map((task, index) => {
         let taskDescription = task.description;
-        console.log(task);
-        console.log(index);
-        return <TaskCard taskDescription={taskDescription} key={index} />;
+        return (
+          <TaskCard
+            handleEdit={handleEdit}
+            taskId={task.id}
+            handelDelete={handleDelete}
+            taskDescription={taskDescription}
+            key={index}
+          />
+        );
       })}
     </div>
   );

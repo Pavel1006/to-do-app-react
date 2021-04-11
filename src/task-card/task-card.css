@@ -1,7 +1,13 @@
 .border {
-  width: 230px;
+  min-width: 375px;
   height: 30px;
   border: 1px solid;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 30px auto 50px 55px;
+}
+.alignCenter {
+  padding-top: 3px;
+}
+.margin {
+  margin-top: 8px;
 }
